@@ -1,85 +1,170 @@
 Видео обзор
+
 https://m.youtube.com/watch?v=MW89LbaBLlw
+
 https://m.youtube.com/watch?v=-Ke4tZzW3aY
+
 https://m.youtube.com/watch?v=m6tYigD6Oe0
 
+
+
 assert_that(value) - основной метод для проверок, возвращает объект с методами:
+
 .is_equal(expected) / .is_not_equal(value) - проверка равенства
+
 .is_null() / .is_not_null() - проверка на null
+
 .is_true() / .is_false() - для булевых значений
+
 .is_empty() / .is_not_empty() - для массивов, строк, словарей
+
 .contains(items) - проверка наличия элементов
+
 .has_size(size) - проверка размера коллекций
+
 .is_instanceof(type) - проверка типа объекта
 
 
+
+
+
 assert_str(value) - для строк:
+
 .is_equal(expected) / .is_equal_ignoring_case(expected)
+
 .contains(substring) / .starts_with(prefix) / .ends_with(suffix)
+
 .is_empty() / .has_length(length)
 
 
+
+
+
 assert_array(array) - для массивов:
+
 .contains([items]) / .contains_exactly([items])
+
 .has_size(size) / .is_empty()
+
 .contains_same_elements([items])
 
 
+
+
+
 assert_float(value) - для чисел с плавающей точкой:
+
 .is_equal(expected) - с учетом погрешности
+
 .is_less(value) / .is_greater(value)
+
 .is_between(min, max)
 
 
+
+
+
 assert_object(obj) - для объектов:
+
 .is_null() / .is_not_null()
+
 .is_same(other) - проверка на тот же экземпляр
+
 .is_instanceof(type)
 
 
+
+
+
 Lifecycle методы
+
 before() - выполняется перед каждым тестом
+
 after() - выполняется после каждого теста
+
 before_test() - выполняется один раз перед всеми тестами
+
 after_test() - выполняется один раз после всех тестов
 
 
+
+
+
 Mocking и Spying
+
 mock(Class) - создает mock объекта
+
 spy(instance) - создает spy существующего объекта
+
 auto_free(object) - автоматически освобождает объект после теста
+
 do_return(value).on(mock).method(args) - настройка возвращаемого значения
+
 verify(mock, times).method(args) - проверка вызовов метода
+
 times может быть: 0, 1, 2, times(n), at_least(n), at_most(n), never(), any_times()
+
 when(condition).then_return(value) - условная настройка mock
 
 
+
+
+
 Scene Runner
+
 scene_runner(scene_path) - для тестирования сцен:
+
 .simulate_frames(count) - симуляция кадров
+
 .simulate_until_signal(signal_name, timeout) - ожидание сигнала
+
 .invoke(method_name) - вызов метода на сцене
+
 .set_property(name, value) / .get_property(name)
+
 runner - встроенный scene runner для текущей тестовой сцены
 
 
+
+
+
 Утилиты
+
 await_signal_on(object, signal_name, args, timeout) - ожидание сигнала
+
 await_millis(milliseconds) - ожидание времени
+
 fail(message) - принудительный провал теста
+
 skip(message) - пропуск теста
 
 
+
+
+
 Параметризованные тесты
+
 @test_parameters([...]) - декоратор для параметризованных тестов
+
 Пример:
+
 @test_parameters([
+
     [1, 2, 3],
+
     [5, 5, 10]
+
 ])
+
 func test_addition(a, b, expected):
+
     assert_that(a + b).is_equal(expected)
 
 
+
+
+
 Продвинутые тесты
+
 when/then/verify/mock
+
