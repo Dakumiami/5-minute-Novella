@@ -13,3 +13,16 @@ config_version=5
 config/name="novel"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://novel_core/": "teal",
+"res://reports/": "red",
+"res://test/": "blue"
+}
